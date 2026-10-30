@@ -57,7 +57,7 @@ Rank Math free vs Pro (per its KB): multiple schemas per post, custom schema bui
 
 ## Next steps
 
-1. Install 0.4.0 by hand once on each site; later versions come through Plugins → Update.
+1. Install 0.4.0 by hand once on each site (done on the first site 2026-10-30; next: SBR); later versions come through Plugins → Update. Confirm on the next release that the update notice appears.
 2. Later modules as content arrives: VideoObject (e.g. model-home tours), Person `sameAs`.
 3. New site: install, define entities (Settings → PIM Schema → Entities), add a `pim_schema_post_types` mapping in that site's plugin (start from `docs/examples/real-estate.php`).
 
