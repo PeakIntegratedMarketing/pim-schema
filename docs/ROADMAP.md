@@ -61,6 +61,10 @@ Rank Math free vs Pro (per its KB): multiple schemas per post, custom schema bui
 2. Later modules as content arrives: VideoObject (e.g. model-home tours), Person `sameAs`.
 3. New site: install, define entities (Settings → PIM Schema → Entities), add a `pim_schema_post_types` mapping in that site's plugin (start from `docs/examples/real-estate.php`).
 
+## Deferred (decided 2026-10-30)
+
+- Mapping UI in the plugin (JSON text box or visual builder): not worth it at 1–2 new sites a year; mappings stay in each site's plugin (~30 min from `docs/examples/real-estate.php`). Revisit if non-developers need to set up mappings or the site count grows (text box first; needs declarative value maps / time parsing / list splitting).
+
 ## Open questions
 
 - None open. Site-specific questions live in each client's project notes.
