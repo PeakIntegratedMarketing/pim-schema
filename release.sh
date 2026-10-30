@@ -13,5 +13,6 @@ V=$(grep -m1 'Version:' pim-schema.php | awk '{print $NF}')
 ./build.sh
 NOTES=$(grep -m1 -F -- "- **$V**" README.md || echo "v$V")
 git rev-parse "v$V" >/dev/null 2>&1 || git tag -a "v$V" -m "v$V"
-git push -q && git push -q origin "v$V"
+git push -q origin HEAD
+git push -q origin "v$V"
 "$GH" release create "v$V" dist/pim-schema.zip --title "v$V" --notes "$NOTES" ${1:+--prerelease}
