@@ -1,0 +1,11 @@
+.git
+.gitignore
+.distignore
+.DS_Store
+dist
+tests
+docs
+build.sh
+CLAUDE.md
+node_modules
+release.sh

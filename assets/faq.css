@@ -1,0 +1,164 @@
+/*
+ * PIM Schema: FAQ block default styles.
+ * Every selector is wrapped in :where() (zero specificity), so any site CSS wins.
+ * Uses ACSS variables when present, with plain fallbacks. Tweak per site with the
+ * --pim-faq-* custom properties, e.g. .wp-block-pim-faq { --pim-faq-question-transform: uppercase; }
+ */
+
+:where(.wp-block-pim-faq) {
+	--pim-faq-gap: var(--space-s, 1rem);
+	--pim-faq-divider: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+	--pim-faq-question-color: inherit;
+	--pim-faq-question-font: inherit;
+	--pim-faq-question-weight: 700;
+	--pim-faq-question-size: inherit;
+	--pim-faq-question-transform: none;
+	--pim-faq-question-spacing: normal;
+	--pim-faq-icon-size: 0.7em;
+	--pim-faq-icon-color: currentColor;
+	--pim-faq-answer-gap: var(--space-xs, 0.5em);
+}
+
+:where(.wp-block-pim-faq .faq__title) {
+	margin-block: 0 var(--pim-faq-gap);
+}
+
+:where(.wp-block-pim-faq .faq__list) {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pim-faq-gap);
+}
+
+:where(.wp-block-pim-faq .faq-item) {
+	padding-block-end: var(--pim-faq-gap);
+	border-block-end: var(--pim-faq-divider);
+}
+
+:where(.wp-block-pim-faq .faq-item__question) {
+	display: flex;
+	align-items: baseline;
+	gap: var(--space-xs, 0.5em);
+	margin: 0;
+	color: var(--pim-faq-question-color);
+	font-family: var(--pim-faq-question-font);
+	font-weight: var(--pim-faq-question-weight);
+	font-size: var(--pim-faq-question-size);
+	text-transform: var(--pim-faq-question-transform);
+	letter-spacing: var(--pim-faq-question-spacing);
+	line-height: inherit;
+	list-style: none;
+	cursor: pointer;
+}
+
+:where(.wp-block-pim-faq:not([data-faq-icon="native"]) .faq-item__question)::-webkit-details-marker {
+	display: none;
+}
+
+:where(.wp-block-pim-faq .faq-item__title) {
+	margin: 0;
+	font: inherit;
+	color: inherit;
+	letter-spacing: inherit;
+	text-transform: inherit;
+}
+
+/* Gap, not margins, so site rules like `.faq-item__answer p { margin: 0 }` can't collapse the spacing. */
+:where(.wp-block-pim-faq .faq-item__answer) {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pim-faq-answer-gap);
+	margin-block-start: var(--pim-faq-answer-gap);
+}
+
+:where(.wp-block-pim-faq .faq-item__answer > *) {
+	margin-block: 0;
+}
+
+/* Icons (set per block or in Settings → PIM Schema). */
+:where(.wp-block-pim-faq .faq-item__icon) {
+	flex-shrink: 0;
+	display: inline-flex;
+	justify-content: center;
+	inline-size: 1em;
+	font-size: var(--pim-faq-icon-size);
+	color: var(--pim-faq-icon-color);
+	line-height: 1;
+}
+
+:where(.wp-block-pim-faq:is([data-faq-icon="none"], [data-faq-icon="native"]) .faq-item__icon) {
+	display: none;
+}
+
+/* Native: the browser's own disclosure marker (summary stays a list item). */
+:where(.wp-block-pim-faq[data-faq-icon="native"] .faq-item__question) {
+	display: list-item;
+	list-style: revert;
+	cursor: pointer;
+}
+
+:where(.wp-block-pim-faq[data-faq-icon="triangle"] .faq-item__icon)::before {
+	content: "\25B6";
+}
+
+:where(.wp-block-pim-faq[data-faq-icon="triangle"] .faq-item[open] .faq-item__icon)::before {
+	content: "\25BC";
+}
+
+:where(.wp-block-pim-faq[data-faq-icon="plus"] .faq-item__icon)::before {
+	content: "+";
+	font-size: 1.6em;
+}
+
+:where(.wp-block-pim-faq[data-faq-icon="plus"] .faq-item[open] .faq-item__icon)::before {
+	content: "\2212";
+}
+
+:where(.wp-block-pim-faq[data-faq-icon="chevron"] .faq-item__icon)::before {
+	content: "";
+	inline-size: 0.55em;
+	block-size: 0.55em;
+	border-inline-end: 0.15em solid currentColor;
+	border-block-end: 0.15em solid currentColor;
+	transform: translateY(-0.15em) rotate(-45deg);
+	transition: transform 0.2s ease;
+}
+
+:where(.wp-block-pim-faq[data-faq-icon="chevron"] .faq-item[open] .faq-item__icon)::before {
+	transform: translateY(-0.3em) rotate(45deg);
+}
+
+/* Editor: items are always expanded there; show the open state on the icon only. */
+:where(.editor-styles-wrapper .wp-block-pim-faq[data-faq-icon="triangle"] .faq-item.is-open .faq-item__icon)::before {
+	content: "\25BC";
+}
+
+:where(.editor-styles-wrapper .wp-block-pim-faq[data-faq-icon="plus"] .faq-item.is-open .faq-item__icon)::before {
+	content: "\2212";
+}
+
+:where(.editor-styles-wrapper .wp-block-pim-faq[data-faq-icon="native"] .faq-item__question) {
+	display: flex;
+}
+
+:where(.editor-styles-wrapper .wp-block-pim-faq[data-faq-icon="native"] .faq-item__icon) {
+	display: inline-flex;
+}
+
+:where(.editor-styles-wrapper .wp-block-pim-faq[data-faq-icon="native"] .faq-item__icon)::before {
+	content: "\25B6";
+	font-size: 0.8em;
+}
+
+:where(.editor-styles-wrapper .wp-block-pim-faq[data-faq-icon="native"] .faq-item.is-open .faq-item__icon)::before {
+	content: "\25BC";
+}
+
+:where(.editor-styles-wrapper .wp-block-pim-faq[data-faq-icon="chevron"] .faq-item.is-open .faq-item__icon)::before {
+	transform: translateY(-0.3em) rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:where(.wp-block-pim-faq .faq-item__icon)::before {
+		transition: none;
+	}
+}

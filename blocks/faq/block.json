@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "pim/faq",
+	"title": "FAQ",
+	"category": "text",
+	"icon": "editor-help",
+	"description": "Questions and answers in native accordions, with FAQPage schema. Paste a whole FAQ from Google Docs.",
+	"keywords": [ "faq", "questions", "accordion", "schema" ],
+	"textdomain": "pim-schema",
+	"attributes": {
+		"title": { "type": "string", "default": "" },
+		"titleLevel": { "type": "number", "default": 2 },
+		"questionTag": { "type": "string", "default": "none" },
+		"exclusive": { "type": "boolean", "default": false },
+		"icon": { "type": "string", "default": "" },
+		"schema": { "type": "boolean", "default": true }
+	},
+	"providesContext": {
+		"pim/faqQuestionTag": "questionTag"
+	},
+	"supports": {
+		"anchor": true,
+		"className": true,
+		"html": false,
+		"spacing": { "margin": [ "top", "bottom" ] }
+	},
+	"editorScript": "pim-schema-faq-editor",
+	"editorStyle": "pim-schema-faq-editor",
+	"style": "pim-schema-faq"
+}

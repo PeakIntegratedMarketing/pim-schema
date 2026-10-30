@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "pim/faq-item",
+	"title": "FAQ Item",
+	"category": "text",
+	"icon": "editor-help",
+	"description": "One question and its answer.",
+	"parent": [ "pim/faq" ],
+	"textdomain": "pim-schema",
+	"attributes": {
+		"question": { "type": "string", "default": "" },
+		"open": { "type": "boolean", "default": false }
+	},
+	"usesContext": [ "pim/faqQuestionTag" ],
+	"supports": {
+		"anchor": true,
+		"className": true,
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "pim-schema-faq-editor"
+}
